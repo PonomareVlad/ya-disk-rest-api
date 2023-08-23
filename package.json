@@ -1,6 +1,6 @@
 {
   "name": "@ponomarevlad/ya-disk-rest-api",
-  "version": "1.1.2-fetch.2",
+  "version": "1.1.2-fetch.3",
   "author": "Ilya Strus <strax1990@gmail.com>",
   "description": "Тщательно типизированная и задокументированная обертка над Yandex Disk REST API",
   "scripts": {
@@ -115,6 +115,6 @@
     ]
   },
   "dependencies": {
-    "axios": "npm:@ponomarevlad/redaxios@^0.5.1-fix.1"
+    "axios": "npm:@ponomarevlad/redaxios@^0.5.1-fix.3"
   }
 }
