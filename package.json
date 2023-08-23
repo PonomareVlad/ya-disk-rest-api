@@ -116,6 +116,6 @@
     ]
   },
   "dependencies": {
-    "axios": "^0.26.1"
+    "axios": "npm:redaxios@^0.5.1"
   }
 }

@@ -1,4 +1,3 @@
-import { createReadStream } from 'fs';
 import {
   YA_DISK_BASE_URL,
   YA_DISK_RESOURCES_URL,
@@ -65,6 +64,7 @@ export class YaDisk {
    */
   public async getDiskMetadata(): Promise<IGetDiskMetadataRes> {
     const res = await this._http.request<IGetDiskMetadataRes>({
+      url: YA_DISK_BASE_URL,
       method: 'GET',
     });
     return res.data;
@@ -390,7 +390,8 @@ export class YaDisk {
   ): Promise<void> {
     let body: TUploadFile;
     if (typeof params.file === 'string') {
-      body = createReadStream(params.file, 'binary');
+      const response = await fetch(params.file);
+      body = response.body as ReadableStream;
     } else {
       body = params.file;
     }

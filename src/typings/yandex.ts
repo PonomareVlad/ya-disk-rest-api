@@ -1,8 +1,7 @@
 import type { Dict } from './utils';
-import type { Stream } from 'stream';
 
 export type TResourceType = 'file' | 'dir';
-export type TUploadFile = Stream | Buffer | string;
+export type TUploadFile = ReadableStream | Buffer | string;
 export type TPreviewSize = 'S' | 'M' | 'L' | 'XL' | 'XXL' | 'XXXL' | string;
 export type TSort =
   | 'name'
@@ -170,7 +169,7 @@ export interface IGetUploadUrlParams {
 export interface IUploadByUploadUrlParams {
   // ссылка для загрузки файла
   url: string;
-  // загружаемый файл. может быть путем до файла, Stream либо Buffer
+  // загружаемый файл. может быть путем до файла, ReadableStream либо Buffer
   file: TUploadFile;
 }
 export interface IUploadParams
