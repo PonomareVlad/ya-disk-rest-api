@@ -1,6 +1,5 @@
 import { YA_OAUTH_BASE_URL } from './config';
 import { HttpClient } from './http-client';
-import { URLSearchParams } from 'url';
 import type {
   IRefreshTokenParams,
   IRefreshTokenRes,

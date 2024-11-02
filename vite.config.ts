@@ -18,7 +18,7 @@ export default defineConfig({
     lib: {
       entry: path.resolve(__dirname, 'src', 'index.ts'),
       name: 'YaDisk',
-      fileName: format => `lib.${format}.js`,
+      fileName: format => `lib.${format}.${format === 'es' ? 'm' : ''}js`,
     },
     rollupOptions: {
       // make sure to externalize deps that shouldn't be bundled

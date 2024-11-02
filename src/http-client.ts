@@ -9,8 +9,11 @@ export class HttpClient implements IHttpClient {
     const client = axios.create({
       baseURL: baseUrl,
     });
+    if (typeof client.defaults.headers !== 'object') {
+      client.defaults.headers = {};
+    }
     if (authToken) {
-      client.defaults.headers.common.Authorization = authToken;
+      client.defaults.headers.Authorization = `OAuth ${authToken}`;
       client.defaults.maxBodyLength = Infinity;
       client.defaults.maxContentLength = Infinity;
       client.defaults.maxRedirects = 0;
@@ -18,7 +21,7 @@ export class HttpClient implements IHttpClient {
     this._client = client;
   }
   public setAuthToken(token: string) {
-    this._client.defaults.headers.common.Authorization = token;
+    this._client.defaults.headers.Authorization = `OAuth ${token}`;
   }
   public async request<T>(params: IReqParams): Promise<THttpClientRes<T>> {
     try {
@@ -27,7 +30,7 @@ export class HttpClient implements IHttpClient {
         method: params.method,
         data: params.body,
         params: params.params,
-        headers: params.headers,
+        headers: params.headers || {},
       });
       return {
         data: result.data,
